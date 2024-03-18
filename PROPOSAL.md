@@ -37,8 +37,6 @@ As a player, I want the ability to play online against my friends.
 
 *Pseudocode*
 
-Psuedocode: 
-
 Initialize game variables
   Set player score to 0
   Set computer score to 0
