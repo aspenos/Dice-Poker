@@ -35,10 +35,6 @@ As a player, I want the ability to customize the background wallpaper, adding im
 As a player, I want the ability to listen to music inside the game, adding immersion. 
 As a player, I want the ability to play online against my friends. 
 
-list of all hands history on results page
-
-*Notionboard Template*
-
 *Timeline*
 
 | Day       | Task                                                                    | Status |

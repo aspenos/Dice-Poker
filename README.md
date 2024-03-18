@@ -2,6 +2,47 @@ Dice Poker: Dice Poker is a game that merges elements of poker with the randomne
 
 Technologies Used: Dice Poker utilizes a combination of HTML, CSS, and JavaScript, all within the Visual Studio Code environment, to create a dynamic and interactive gaming experience that runs smoothly in web browsers. HTML is used to structure the game's interface, while CSS adds style and aesthetic appeal, ensuring the game is visually engaging. JavaScript forms the backbone of the game's mechanics, handling the dice rolls, scoring logic, and player interactions in real time. The choice of Visual Studio Code as the development platform enables efficient coding, testing, and debugging, streamlining the game's development process. Designed for web browser play, "Dice Poker" offers easy accessibility and a user-friendly gaming experience across various devices.
 
+Psuedocode: 
+
+Initialize game variables
+  Set player score to 0
+  Set computer score to 0
+  Set target score to 100
+
+Display Title Page
+
+While player score < target score and computer score < target score
+  If it's the player's turn
+    Display Game Page
+    Player rolls dice
+    Calculate player's hand and score
+    Update player score
+    Display player's hand and updated score
+    Switch to computer's turn
+
+  If it's the computer's turn
+    Computer rolls dice
+    Calculate computer's hand and score
+    Update computer score
+    Display computer's hand and updated score
+    Switch to player's turn
+
+  Check if player or computer reached the target score
+    If yes, end loop
+
+Display Result Page
+  If player score >= target score
+    Display "Player Wins"
+  Else if computer score >= target score
+    Display "Computer Wins"
+  Else
+    Display "It's a tie"
+
+Ask player if they want to play again
+  If yes, restart the game
+  If no, exit game
+
+
 Getting Started: To play Dice Poker, first clone the repository to your local machine using Git. git clone https://your-github-repository-url/dice-poker.git. Navigate to the cloned project directory on your computer. Open the 'index.html' file in our preferred web browser to start the game. Dice Poker will load in your browser window. Follow the on-screen instructions to start playing.  Roll the dice, form poker hands, and compete against the computer to reach 100 points. 
 
 WireFrames/Screenshots:
@@ -29,4 +70,4 @@ Inspiration:
 
 Next Steps: 
 
-STRETCH GOALS 
+Building on the foundation of Dice Poker, I am to enhance the player experience through the following long-term goals: Animated dice rolls, customizable dice, audio indicators for accessibility, customizable background image, in-game music, and online functionality. These enhancements aim to deepen player engagement, improve accessibility, and expand the game's functionality. Introducing animations for rolling dice would make the game more visually engaging, bringing the action to life. Customizable dice, background wallpaper, and in-game music would add a personal touch to the experience. Audio cues that signal a win, loss, or tie, as well as in-game music, would add an auditory dimension to the game that furthers the player's immersion. Developing the capability for players to compete with friends online will transform the game from a single-player experience to one that can be enjoyed with friends remotely, expanding the game's reach. 
