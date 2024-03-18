@@ -35,6 +35,48 @@ As a player, I want the ability to customize the background wallpaper, adding im
 As a player, I want the ability to listen to music inside the game, adding immersion. 
 As a player, I want the ability to play online against my friends. 
 
+*Pseudocode*
+
+Psuedocode: 
+
+Initialize game variables
+  Set player score to 0
+  Set computer score to 0
+  Set target score to 100
+
+Display Title Page
+
+While player score < target score and computer score < target score
+  If it's the player's turn
+    Display Game Page
+    Player rolls dice
+    Calculate player's hand and score
+    Update player score
+    Display player's hand and updated score
+    Switch to computer's turn
+
+  If it's the computer's turn
+    Computer rolls dice
+    Calculate computer's hand and score
+    Update computer score
+    Display computer's hand and updated score
+    Switch to player's turn
+
+  Check if player or computer reached the target score
+    If yes, end loop
+
+Display Result Page
+  If player score >= target score
+    Display "Player Wins"
+  Else if computer score >= target score
+    Display "Computer Wins"
+  Else
+    Display "It's a tie"
+
+Ask player if they want to play again
+  If yes, restart the game
+  If no, exit game
+
 *Timeline*
 
 | Day       | Task                                                                    | Status |
