@@ -34,6 +34,16 @@ button:hover {
     min-height: 100vh;
 }
 
+@font-face {
+    font-family: 'NeonFont';
+    src: url('./STYLE/NeonFont.ttf') format('truetype');
+}
+
+.game-title {
+    font-family: 'NeonFont', sans-serif;
+    font-size: 48px;
+    color: #FF00FF;
+}
 
 #gamePage {
     display: flex;
