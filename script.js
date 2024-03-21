@@ -121,12 +121,12 @@ function getDiceCounts(dice) {
 
 
 document.getElementById('rollButton').addEventListener('click', function() {
-    animateDice();
-    setTimeout(() => {
-        let diceValues = rollDice();
-        let hand = calculateHand(diceValues);
-        updateGameStteAndUI(hand);
-    }, 2000);
+    //animateDice();
+    //setTimeout(() => {
+        //let diceValues = rollDice();
+        //let hand = calculateHand(diceValues);
+        //updateGameStteAndUI(hand);
+    //}, 2000);
     if (gameState.currentPlayer === 'player') {
         playTurn('player');
         gameState.currentPlayer = 'computer';
