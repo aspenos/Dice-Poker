@@ -11,19 +11,27 @@ h1, h2, h3 {
     color: #333;
 }
 
+#titleImage {
+    display: block;
+    margin: 20px auto; 
+    max-width: 100%; 
+    height: auto; 
+}
+
 button {
-    padding: 10px 15px;
-    margin: 10px;
+    padding: 5px 15px;
+    margin: 50px;
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    border-radius: 20px;
+    background-color: #210456;
+    color: #8de41c;
     cursor: pointer;
     font-size: 16px;
+    font-family: 'NeonFont', sans-serif;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #b915cc;
 }
 
 
@@ -48,27 +56,45 @@ button:hover {
 #gamePage {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
 }
 
-#playerSection, #computerSection {
+#playerSection {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
     margin: 0 20px;
-}
-
-#playerSection {
     text-align: left;
 }
 
-#computerSection {
-    align-items: flex-end;
-    text-align: right;
+#playerSection h3, #computerSection h3, #playerScore, #computerScore, #computerHand {
+    font-family: 'RetroFont', sans-serif;
+    font-size: 20px; 
+    color: #FFFFFF; 
 }
 
+#computerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    margin: 0 20px;
+    text-align: left;
+}
+    
+@font-face {
+    font-family: 'RetroFont';
+    src: url('./STYLE/RetroFont.ttf') format('truetype');
+}
+
+#playerHand {
+    font-family: 'RetroFont', sans-serif; 
+    font-size: 24px; 
+    color: #FFFFFF; 
+    margin-top: 50px; 
+}
 
 #resultPage {
     background: linear-gradient(to bottom, #ff0080, #ff80bf);
@@ -100,3 +126,22 @@ button:hover {
     height: 60px;
 }
 
+@font-face {
+    font-family: 'WinFont';
+    src: url('./STYLE/WinFont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LoseFont';
+    src: url('./STYLE/LoseFont.ttf') format('truetype');
+}
+
+.win-message {
+    font-family: 'WinFont', sans-serif;
+    color: #00ff00; 
+}
+
+.lose-message {
+    font-family: 'LoseFont', sans-serif;
+    color: #ff0000; 
+}
