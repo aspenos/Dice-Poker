@@ -143,7 +143,7 @@ function playTurn(player) {
 
     gameState[player + 'Score'] += hand.score;
     document.getElementById(player + 'Score').textContent = 'Score: ' + gameState[player + 'Score'];
-    document.getElementById(player + 'Hand').textContent = 'Hand: ' + hand.name;
+    document.getElementById(player + 'Hand').textContent = hand.name;
 
     checkForWin();
 

@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f3f3f3;
+    background: linear-gradient(to bottom, #ff0080, #ff80bf);
 }
 
 h1, h2, h3 {
@@ -41,8 +41,8 @@ button:hover {
 
 .game-title {
     font-family: 'NeonFont', sans-serif;
-    font-size: 48px;
-    color: #FF00FF;
+    font-size: 70px;
+    color: #8de41c;
 }
 
 #gamePage {
@@ -71,7 +71,7 @@ button:hover {
 
 
 #resultPage {
-    background-color: white;
+    background: linear-gradient(to bottom, #ff0080, #ff80bf);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
