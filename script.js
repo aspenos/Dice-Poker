@@ -19,6 +19,16 @@ function initGame() {
     document.getElementById('resultPage').style.display = 'none';
 }
 
+document.getElementById('howToPlayButton').addEventListener('click', function() {
+    document.getElementById('titlePage').style.display = 'none';
+    document.getElementById('howToPlayPage').style.display = 'block';
+});
+
+
+document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('howToPlayPage').style.display = 'none';
+    document.getElementById('titlePage').style.display = 'block';
+});
 
 document.getElementById('startButton').addEventListener('click', function() {
     initGame();
@@ -26,14 +36,9 @@ document.getElementById('startButton').addEventListener('click', function() {
     document.getElementById('gamePage').style.display = 'block';
 });
 
-
 function rollDice() {
     return Array.from({ length: 5 }, () => Math.floor(Math.random() * 6) + 1);
 }
-
-
-
-
 
 function checkForWin() {
     if (gameState.playerScore >= 100 || gameState.computerScore >= 100) {
@@ -43,12 +48,10 @@ function checkForWin() {
     }
 }
 
-
 function calculateHand(dice) {
     dice.sort((a, b) => a - b); 
     return evaluateHand(dice);
 }
-
 
 function evaluateHand(dice) {
     if (isStraight(dice)) {
