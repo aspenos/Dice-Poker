@@ -1,4 +1,5 @@
 
+
 let gameState = {
     playerScore: 0,
     computerScore: 0,
@@ -24,7 +25,6 @@ document.getElementById('howToPlayButton').addEventListener('click', function() 
     document.getElementById('howToPlayPage').style.display = 'block';
 });
 
-
 document.getElementById('backButton').addEventListener('click', function() {
     document.getElementById('howToPlayPage').style.display = 'none';
     document.getElementById('titlePage').style.display = 'block';
@@ -36,9 +36,40 @@ document.getElementById('startButton').addEventListener('click', function() {
     document.getElementById('gamePage').style.display = 'block';
 });
 
+document.getElementById('rollButton').addEventListener('click', animateDice);
+
+document.getElementById('playAgainButton').addEventListener('click', initGame);
+
 function rollDice() {
     return Array.from({ length: 5 }, () => Math.floor(Math.random() * 6) + 1);
 }
+
+/////////////////////
+
+document.getElementById('rollButton').addEventListener('click', animateDice);
+
+function animateDice() {
+    const diceImages = document.querySelectorAll('#diceContainer img');
+    diceImages.forEach(die => die.classList.add('rolling'));
+
+    setTimeout(() => {
+        const diceValues = rollDice();
+        diceValues.forEach((value, index) => {
+            diceImages[index].src = `style/dice-six-faces-${value}.png`;
+            diceImages[index].classList.remove('rolling');
+        });
+
+        let hand = calculateHand(diceValues);
+        gameState[gameState.currentPlayer + 'Score'] += hand.score;
+        document.getElementById(gameState.currentPlayer + 'Score').textContent = 'Score: ' + gameState[gameState.currentPlayer + 'Score'];
+        document.getElementById(gameState.currentPlayer + 'Hand').textContent = hand.name;
+
+        checkForWin();
+        gameState.currentPlayer = gameState.currentPlayer === 'player' ? 'computer' : 'player';
+    }, 2000); // Time in milliseconds
+}
+
+/////////////////////////
 
 function checkForWin() {
     if (gameState.playerScore >= 100 || gameState.computerScore >= 100) {
@@ -72,6 +103,15 @@ function evaluateHand(dice) {
         return { name: 'High Card', score: 0 };
     }
 }
+
+function getDiceCounts(dice) {
+    const counts = {};
+    dice.forEach(die => {
+        counts[die] = (counts[die] || 0) + 1;
+    });
+    return Object.values(counts);
+}
+
 
 function isStraight(dice) {
     for (let i = 0; i < dice.length - 1; i++) {
@@ -136,7 +176,6 @@ document.getElementById('rollButton').addEventListener('click', function() {
     }
 });
 
-
 function playTurn(player) {
     let dice = rollDice();
     let hand = calculateHand(dice);
@@ -149,6 +188,7 @@ function playTurn(player) {
 
     gameState.currentPlayer = gameState.currentPlayer === 'player' ? 'computer' : 'player';
 }
+
 
 document.getElementById('playAgainButton').addEventListener('click', initGame);
 

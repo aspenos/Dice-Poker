@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -30,7 +29,6 @@ h1, h2, h3 {
     font-size: 20px;
 }
 
-
 button {
     padding: 5px 15px;
     margin: 50px;
@@ -46,7 +44,6 @@ button {
 button:hover {
     background-color: #b915cc;
 }
-
 
 #titlePage, #gamePage, #resultPage {
     display: none;
@@ -73,7 +70,7 @@ button:hover {
     width: 100%;
 }
 
-#playerSection {
+#playerSection, #computerSection {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -96,7 +93,7 @@ button:hover {
     margin: 0 20px;
     text-align: left;
 }
-    
+
 @font-face {
     font-family: 'RetroFont';
     src: url('./STYLE/RetroFont.ttf') format('truetype');
@@ -122,13 +119,11 @@ button:hover {
 }
 
 #resultMessage {
-    font-family: 'ResultFont', sans-serif; /* Replace 'YourFontName' with the actual font name */
-    font-size: 50px; /* Adjust the size as needed */
-    color: #ffffff; /* Change color if needed */
+    font-family: 'ResultFont', sans-serif;
+    font-size: 50px;
+    color: #ffffff;
     padding-top: 100px;
 }
-
-
 
 @media (max-width: 600px) {
     #gamePage {
@@ -150,5 +145,14 @@ button:hover {
 #diceContainer img {
     width: 60px;
     height: 60px;
+}
+
+.rolling {
+    animation: rollDice 2s infinite;
+}
+
+@keyframes rollDice {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
