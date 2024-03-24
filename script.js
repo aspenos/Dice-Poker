@@ -48,7 +48,7 @@ function rollDice() {
 
 document.getElementById('rollButton').addEventListener('click', animateDice);
 
-function animateDice() {
+function animateDice(player) {
     const diceImages = document.querySelectorAll('#diceContainer img');
     diceImages.forEach(die => die.classList.add('rolling'));
 
@@ -56,18 +56,46 @@ function animateDice() {
         const diceValues = rollDice();
         diceValues.forEach((value, index) => {
             diceImages[index].src = `style/dice-six-faces-${value}.png`;
-            diceImages[index].classList.remove('rolling');
+            diceImages[index].classList.remove('rolling');document.getElementById('rollButton').addEventListener('click', function() {
+                if (gameState.currentPlayer === 'player') {
+                    animateDice('player');
+                }
+            });
+            
         });
 
         let hand = calculateHand(diceValues);
-        gameState[gameState.currentPlayer + 'Score'] += hand.score;
-        document.getElementById(gameState.currentPlayer + 'Score').textContent = 'Score: ' + gameState[gameState.currentPlayer + 'Score'];
-        document.getElementById(gameState.currentPlayer + 'Hand').textContent = hand.name;
+        gameState[player + 'Score'] += hand.score;
+        updateScoreAndHand(player, gameState[player + 'Score'], hand.name);
 
         checkForWin();
-        gameState.currentPlayer = gameState.currentPlayer === 'player' ? 'computer' : 'player';
-    }, 2000); // Time in milliseconds
+
+        if (player === 'player') {
+            gameState.currentPlayer = 'computer';
+            // Delay computer's turn if the game is not over
+            setTimeout(() => {
+                if (!gameState.gameOver) {
+                    animateDice('computer');
+                }
+            }, 5000); // Delay before computer's turn
+        } else {
+            gameState.currentPlayer = 'player';
+        }
+    }, 2000); // Dice roll animation time
 }
+
+function updateScoreAndHand(player, score, hand) {
+    document.getElementById(player + 'Score').textContent = 'Score: ' + score;
+    document.getElementById(player + 'Hand').textContent = 'Hand: ' + hand;
+}
+
+
+document.getElementById('rollButton').addEventListener('click', function() {
+    if (gameState.currentPlayer === 'player') {
+        animateDice('player');
+    }
+});
+
 
 /////////////////////////
 
@@ -178,7 +206,9 @@ document.getElementById('rollButton').addEventListener('click', function() {
 
 function playTurn(player) {
     let dice = rollDice();
+    console.log("Dice roll result:", dice);
     let hand = calculateHand(dice);
+    console.log("Evaluated hand:", hand.name);
 
     gameState[player + 'Score'] += hand.score;
     document.getElementById(player + 'Score').textContent = 'Score: ' + gameState[player + 'Score'];
@@ -187,6 +217,9 @@ function playTurn(player) {
     checkForWin();
 
     gameState.currentPlayer = gameState.currentPlayer === 'player' ? 'computer' : 'player';
+
+    console.log("Rolled Dice:", diceValues);
+    return diceValues;
 }
 
 
