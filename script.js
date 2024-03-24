@@ -1,5 +1,3 @@
-
-
 let gameState = {
     playerScore: 0,
     computerScore: 0,
@@ -36,19 +34,17 @@ document.getElementById('startButton').addEventListener('click', function() {
     document.getElementById('gamePage').style.display = 'block';
 });
 
-document.getElementById('rollButton').addEventListener('click', animateDice);
 
-document.getElementById('playAgainButton').addEventListener('click', initGame);
 
 function rollDice() {
     return Array.from({ length: 5 }, () => Math.floor(Math.random() * 6) + 1);
 }
 
-/////////////////////
 
-document.getElementById('rollButton').addEventListener('click', animateDice);
 
-function animateDice(player) {
+
+function animateDice() {
+    const player = gameState.currentPlayer;
     const diceImages = document.querySelectorAll('#diceContainer img');
     diceImages.forEach(die => die.classList.add('rolling'));
 
@@ -56,48 +52,40 @@ function animateDice(player) {
         const diceValues = rollDice();
         diceValues.forEach((value, index) => {
             diceImages[index].src = `style/dice-six-faces-${value}.png`;
-            diceImages[index].classList.remove('rolling');document.getElementById('rollButton').addEventListener('click', function() {
-                if (gameState.currentPlayer === 'player') {
-                    animateDice('player');
-                }
-            });
-            
+            diceImages[index].classList.remove('rolling');
         });
 
-        let hand = calculateHand(diceValues);
-        gameState[player + 'Score'] += hand.score;
-        updateScoreAndHand(player, gameState[player + 'Score'], hand.name);
-
-        checkForWin();
-
-        if (player === 'player') {
-            gameState.currentPlayer = 'computer';
-            // Delay computer's turn if the game is not over
-            setTimeout(() => {
-                if (!gameState.gameOver) {
-                    animateDice('computer');
-                }
-            }, 5000); // Delay before computer's turn
-        } else {
-            gameState.currentPlayer = 'player';
-        }
-    }, 2000); // Dice roll animation time
+        setTimeout(() => {
+            evaluateTurn(player, diceValues);
+        }, 500);
+    }, 2000);
 }
+
+function evaluateTurn(player, diceValues) {
+    let hand = calculateHand(diceValues);
+    gameState[player + 'Score'] += hand.score;
+    updateScoreAndHand(player, gameState[player + 'Score'], hand.name);
+
+    checkForWin();
+
+    gameState.currentPlayer = gameState.currentPlayer === 'player' ? 'computer' : 'player';
+}
+
+
+
 
 function updateScoreAndHand(player, score, hand) {
-    document.getElementById(player + 'Score').textContent = 'Score: ' + score;
-    document.getElementById(player + 'Hand').textContent = 'Hand: ' + hand;
+    const scoreElement = document.getElementById(player + 'Score');
+    const handElement = document.getElementById(player + 'Hand');
+
+    if (scoreElement && handElement) {
+        scoreElement.textContent = 'Score: ' + score;
+        handElement.textContent = 'Hand: ' + hand;
+    }
 }
 
 
-document.getElementById('rollButton').addEventListener('click', function() {
-    if (gameState.currentPlayer === 'player') {
-        animateDice('player');
-    }
-});
 
-
-/////////////////////////
 
 function checkForWin() {
     if (gameState.playerScore >= 100 || gameState.computerScore >= 100) {
@@ -113,9 +101,7 @@ function calculateHand(dice) {
 }
 
 function evaluateHand(dice) {
-    if (isStraight(dice)) {
-        return { name: 'Straight', score: 80 };
-    } else if (isFiveOfAKind(dice)) {
+    if (isFiveOfAKind(dice)) {
         return { name: 'Five of a Kind', score: 40 };
     } else if (isFullHouse(dice)) {
         return { name: 'Full House', score: 24 };
@@ -131,23 +117,12 @@ function evaluateHand(dice) {
         return { name: 'High Card', score: 0 };
     }
 }
-
 function getDiceCounts(dice) {
     const counts = {};
     dice.forEach(die => {
         counts[die] = (counts[die] || 0) + 1;
     });
     return Object.values(counts);
-}
-
-
-function isStraight(dice) {
-    for (let i = 0; i < dice.length - 1; i++) {
-        if (dice[i + 1] - dice[i] !== 1) {
-            return false;
-        }
-    }
-    return true;
 }
 
 function isFiveOfAKind(dice) {
@@ -196,32 +171,11 @@ function getDiceCounts(dice) {
 
 document.getElementById('rollButton').addEventListener('click', function() {
     if (gameState.currentPlayer === 'player') {
-        playTurn('player');
-        gameState.currentPlayer = 'computer';
-    } else {
-        playTurn('computer');
-        gameState.currentPlayer = 'player';
+        animateDice('player');
+    } else if (gameState.currentPlayer === 'computer') {
+        animateDice('computer');
     }
 });
-
-function playTurn(player) {
-    let dice = rollDice();
-    console.log("Dice roll result:", dice);
-    let hand = calculateHand(dice);
-    console.log("Evaluated hand:", hand.name);
-
-    gameState[player + 'Score'] += hand.score;
-    document.getElementById(player + 'Score').textContent = 'Score: ' + gameState[player + 'Score'];
-    document.getElementById(player + 'Hand').textContent = hand.name;
-
-    checkForWin();
-
-    gameState.currentPlayer = gameState.currentPlayer === 'player' ? 'computer' : 'player';
-
-    console.log("Rolled Dice:", diceValues);
-    return diceValues;
-}
-
 
 document.getElementById('playAgainButton').addEventListener('click', initGame);
 
