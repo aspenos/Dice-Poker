@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'NeonFont';
+    src: url('./STYLE/NeonFont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RetroFont';
+    src: url('./STYLE/RetroFont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ResultFont';
+    src: url('./STYLE/ResultFont.ttf') format('truetype');
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -5,30 +20,20 @@ body {
     text-align: center;
     background: linear-gradient(to bottom, #ff0080, #ff80bf);
 }
+
 h1, h2, h3 {
     color: #333;
 }
-#titleImage {
-    display: block;
-    margin: 20px auto;
-    max-width: 300px;
-    height: auto;
-}
-#howToPlayPage {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(to bottom, #ff0080, #ff80bf);
-    padding: 20px;
-    text-align: center;
-    font-size: 20px;
+
+.game-title {
+    font-family: 'NeonFont', sans-serif;
+    font-size: 70px;
+    color: #8de41c;
 }
 
 button {
     padding: 5px 15px;
-    margin: 50px;
+    margin: 20px 50px; /* Adjusted from 50px to create uniform spacing */
     border: none;
     border-radius: 20px;
     background-color: #210456;
@@ -37,6 +42,7 @@ button {
     font-size: 16px;
     font-family: 'NeonFont', sans-serif;
 }
+
 button:hover {
     background-color: #b915cc;
 }
@@ -47,22 +53,27 @@ button:hover {
     justify-content: center;
     min-height: 100vh;
 }
-@font-face {
-    font-family: 'NeonFont';
-    src: url('./STYLE/NeonFont.ttf') format('truetype');
+
+#titleImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 300px;
+    height: auto;
 }
-.game-title {
-    font-family: 'NeonFont', sans-serif;
-    font-size: 70px;
-    color: #8de41c;
+
+#howToPlayPage, #resultPage {
+    background: linear-gradient(to bottom, #ff0080, #ff80bf);
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
 }
+
 #gamePage {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
 }
-
 
 #playerSection, #computerSection {
     display: flex;
@@ -72,67 +83,32 @@ button:hover {
     margin: 0 20px;
     text-align: left;
 }
-#playerSection h3, #computerSection h3, #playerScore, #computerScore, #computerHand {
+
+#playerSection h3, #computerSection h3, #playerScore, #computerScore, #playerHand, #computerHand {
     font-family: 'RetroFont', sans-serif;
     font-size: 20px; 
     color: #FFFFFF; 
 }
-#computerSection {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex: 1;
-    margin: 0 20px;
-    text-align: left;
-}
-    
 
-@font-face {
-    font-family: 'RetroFont';
-    src: url('./STYLE/RetroFont.ttf') format('truetype');
-}
-#playerHand {
-    font-family: 'RetroFont', sans-serif; 
-    font-size: 24px; 
-    color: #FFFFFF; 
-    margin-top: 50px; 
-}
-#resultPage {
-    background: linear-gradient(to bottom, #ff0080, #ff80bf);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-@font-face {
-    font-family: 'ResultFont';
-    src: url('./STYLE/ResultFont.ttf') format('truetype');
+#playerSection h3, #computerSection h3 {
+    border-bottom: 8px solid #8de41c;
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
 #resultMessage {
-    font-family: 'ResultFont', sans-serif; /* Replace 'YourFontName' with the actual font name */
-    font-size: 50px; /* Adjust the size as needed */
-    color: #ffffff; /* Change color if needed */
     font-family: 'ResultFont', sans-serif;
     font-size: 50px;
     color: #ffffff;
     padding-top: 100px;
 }
 
-
-@media (max-width: 600px) {
-    #gamePage {
-        flex-direction: column;
-    }
-    #playerSection, #computerSection {
-        text-align: center;
-        margin: 20px 0;
-    }
-}
 #diceContainer {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
+
 #diceContainer img {
     width: 60px;
     height: 60px;
@@ -147,30 +123,12 @@ button:hover {
     to { transform: rotate(360deg); }
 }
 
-#separator {
-    height: 10px;  
-    background-color: black;  
-}
-
-#gameInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    background-color: #cccccc;  
-}
-
-#playerSection {
-    margin-bottom: 20px; 
-}
-
-#computerSection {
-    margin-top: 75px;  
-    padding-bottom: 50px;
-}
-
-#playerSection h3, #computerSection h3 {
-    border-bottom: 8px solid #8de41c;
-    padding-bottom: 10px;
-    display: inline-block;
+@media (max-width: 600px) {
+    #gamePage {
+        flex-direction: column;
+    }
+    #playerSection, #computerSection {
+        align-items: center;
+        margin: 20px 0;
+    }
 }
