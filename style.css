@@ -5,18 +5,15 @@ body {
     text-align: center;
     background: linear-gradient(to bottom, #ff0080, #ff80bf);
 }
-
 h1, h2, h3 {
     color: #333;
 }
-
 #titleImage {
     display: block;
     margin: 20px auto; 
     max-width: 100%; 
     height: auto; 
 }
-
 #howToPlayPage {
     display: none;
     flex-direction: column;
@@ -29,6 +26,7 @@ h1, h2, h3 {
     font-size: 20px;
 }
 
+
 button {
     padding: 5px 15px;
     margin: 50px;
@@ -40,10 +38,10 @@ button {
     font-size: 16px;
     font-family: 'NeonFont', sans-serif;
 }
-
 button:hover {
     background-color: #b915cc;
 }
+
 
 #titlePage, #gamePage, #resultPage {
     display: none;
@@ -51,24 +49,22 @@ button:hover {
     justify-content: center;
     min-height: 100vh;
 }
-
 @font-face {
     font-family: 'NeonFont';
     src: url('./STYLE/NeonFont.ttf') format('truetype');
 }
-
 .game-title {
     font-family: 'NeonFont', sans-serif;
     font-size: 70px;
     color: #8de41c;
 }
-
 #gamePage {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
 }
+
 
 #playerSection, #computerSection {
     display: flex;
@@ -78,13 +74,11 @@ button:hover {
     margin: 0 20px;
     text-align: left;
 }
-
 #playerSection h3, #computerSection h3, #playerScore, #computerScore, #computerHand {
     font-family: 'RetroFont', sans-serif;
     font-size: 20px; 
     color: #FFFFFF; 
 }
-
 #computerSection {
     display: flex;
     flex-direction: column;
@@ -93,55 +87,55 @@ button:hover {
     margin: 0 20px;
     text-align: left;
 }
+    
 
 @font-face {
     font-family: 'RetroFont';
     src: url('./STYLE/RetroFont.ttf') format('truetype');
 }
-
 #playerHand {
     font-family: 'RetroFont', sans-serif; 
     font-size: 24px; 
     color: #FFFFFF; 
     margin-top: 50px; 
 }
-
 #resultPage {
     background: linear-gradient(to bottom, #ff0080, #ff80bf);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 @font-face {
     font-family: 'ResultFont';
     src: url('./STYLE/ResultFont.ttf') format('truetype');
 }
 
 #resultMessage {
+    font-family: 'ResultFont', sans-serif; /* Replace 'YourFontName' with the actual font name */
+    font-size: 50px; /* Adjust the size as needed */
+    color: #ffffff; /* Change color if needed */
     font-family: 'ResultFont', sans-serif;
     font-size: 50px;
     color: #ffffff;
     padding-top: 100px;
 }
 
+
+
 @media (max-width: 600px) {
     #gamePage {
         flex-direction: column;
     }
-
     #playerSection, #computerSection {
         text-align: center;
         margin: 20px 0;
     }
 }
-
 #diceContainer {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
-
 #diceContainer img {
     width: 60px;
     height: 60px;
@@ -155,4 +149,3 @@ button:hover {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
